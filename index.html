@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    Live server
+    <script>
+      // 1. Простейший короткий тест
+      runTest("Простейший короткий", [1, 2, 300, 150, 77]);
+
+      // 2. Случайные наборы
+      const createRandomArray = (size) =>
+        Array.from({ length: size }, () => Math.floor(Math.random() * 300) + 1);
+      runTest("Случайные 50 чисел", createRandomArray(50));
+      runTest("Случайные 100 чисел", createRandomArray(100));
+      runTest("Случайные 500 чисел", createRandomArray(500));
+      runTest("Случайные 1000 чисел", createRandomArray(1000));
+
+      // 3. Граничные случаи
+      const range = (start, end) =>
+        Array.from({ length: end - start + 1 }, (_, i) => start + i);
+      runTest("Все числа 1 знака", range(1, 9));
+      runTest("Все числа из 2-х знаков", range(10, 99));
+      runTest("Все числа из 3-х знаков", range(100, 300));
+
+      // 4. Тест с дубликатами
+      const duplicateTestData = [];
+      for (let i = 1; i <= 300; i++) {
+        duplicateTestData.push(i, i, i);
+      }
+      runTest("Каждого числа по 3 (всего 900)", duplicateTestData);
+    </script>
+  </body>
+</html>
